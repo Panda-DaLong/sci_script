@@ -1,8 +1,12 @@
 import sys
+import os
 import re
 import itertools
 
 in_file = sys.argv[1]
+path = './' + str(in_file) + '_prm_split'
+
+os.mkdir(path)
 
 params_lst = ['atom', 'multipole', 'polarize', 'vdw', 'bond', 'angle', 'strbnd', 'opbend', 'torsion']
 
@@ -10,7 +14,7 @@ def write_to_file(param, line_str):
     if param == None:
         pass
     else:
-        out_file = str(param) + '.prm'
+        out_file = path + '/' + str(param) + '.prm'
         with open(out_file, 'a') as f_out:
             print(line_str, file = f_out, end='')
 

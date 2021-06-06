@@ -16,8 +16,8 @@ def write_to_file(param, line_str):
 
 def match_param(line_str):
     for i in params_lst:
-        match_para = re.match(i, line_str, flags=0)
-        if match_para:
+        mat = re.match(i, line_str, flags=0)
+        if mat:
             return i
             break
 
@@ -27,4 +27,8 @@ with open(in_file) as f_in:
         line = line.lstrip()
         param = match_param(line)
         write_to_file(param, line)
-        
+        if param == 'multipole':
+            for i in range(0, 4):
+                line = next(lst)
+                write_to_file(param, line)
+            

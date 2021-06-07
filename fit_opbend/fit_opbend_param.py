@@ -27,6 +27,7 @@ k_est = param_est[0]
 k_est = np.around(k_est, 4)
 print(k_est)
 
-#p1 = plt.plot(x, y, "rx")
-#p2 = plt.plot(x, function(x, k_est), "k--")
-#plt.show()
+fig, ax = plt.subplots()
+ax.plot(x, y, "rx")
+ax.plot(x, function(x, k_est), "k--")
+plt.show()

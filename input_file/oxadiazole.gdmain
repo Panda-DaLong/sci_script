@@ -1,0 +1,14 @@
+Title 'oxadiazole at mp2/6-311g**'
+
+DENSITY MP2
+FILE oxadiazole_DMA.fchk 
+
+ANGSTROM
+AU
+
+MULTIPOLES
+SWITCH 0
+RADIUS H 0.65
+LIMIT 2
+
+START 

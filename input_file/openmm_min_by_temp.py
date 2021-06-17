@@ -18,7 +18,7 @@ system = forcefield.createSystem(pdb.topology, nonbondedMethod=PME,
 integrator = VerletIntegrator(0.002*picoseconds)
 
 platform = Platform.getPlatformByName('CUDA')
-properties = {"CudaPrecision": 'single', "DeviceIndex": '0'}
+properties = {"CudaPrecision": 'single', "CudaDeviceIndex": '0'}
 
 simulation = Simulation(pdb.topology, system, integrator, platform, properties)
 simulation.context.setPositions(pdb.positions)

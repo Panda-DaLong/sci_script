@@ -3,14 +3,12 @@ import os
 import re
 import itertools
 
-
-out_file = 'head_2.key_2'
-
 add_num = 500
 
 in_file = sys.argv[1]
 #in_file is a tinker_format key file from poledit(choose 1)
 
+out_file = './' + str(in_file) + '_2'
 
 #split a tinker key file from poledit(choose 1)
 #

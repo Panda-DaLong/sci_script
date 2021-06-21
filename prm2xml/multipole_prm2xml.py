@@ -4,19 +4,19 @@ in_file = sys.argv[1]
 
 def z_then_x(line_str):
     a1,b2,c3,d4,e5 = line_str.split()
-    print('  <Multipole \"'+'type=\"'+b2+'\" kz=\"'+c3+'\" kx=\"'+d4+'\" c0=\"'+e5+'\" ',end='')
+    print('  <Multipole '+'type=\"'+b2+'\" kz=\"'+c3+'\" kx=\"'+d4+'\" c0=\"'+e5+'\" ',end='')
 
 def bisector(line_str):
     a1,b2,c3,d4,e5 = line_str.split()
-    print('  <Multipole \"'+'type=\"'+b2+'\" kz=\"'+c3+'\" kx=\"'+d4+'\" c0=\"'+e5+'\" ',end='')
+    print('  <Multipole '+'type=\"'+b2+'\" kz=\"'+c3+'\" kx=\"'+d4+'\" c0=\"'+e5+'\" ',end='')
 
 def z_then_bisector(line_str):
     a1,b2,c3,d4,e5,f6 = line_str.split()
-    print('  <Multipole \"'+'type=\"'+b2+'\" kz=\"'+c3+'\" kx=\"'+d4+'\" ky=\"'+e5+'\" c0="'+f6+'\" ',end='')
+    print('  <Multipole '+'type=\"'+b2+'\" kz=\"'+c3+'\" kx=\"'+d4+'\" ky=\"'+e5+'\" c0="'+f6+'\" ',end='')
 
 def trisector(line_str):
     a1,b2,c3,d4,e5,f6 = line_str.split()
-    print('  <Multipole \"'+'type=\"'+b2+'\" kz=\"'+c3+'\" kx=\"'+d4+'\" ky=\"'+e5+'\" c0="'+f6+'\" ',end='')
+    print('  <Multipole '+'type=\"'+b2+'\" kz=\"'+c3+'\" kx=\"'+d4+'\" ky=\"'+e5+'\" c0="'+f6+'\" ',end='')
 
 def convert_1(line_str):
     l_s = line_str.split()
@@ -46,7 +46,7 @@ def convert_4(line_str):
 
 def convert_5(line_str):
     a1,b2,c3 = line_str.split()
-    print('q31=\"'+a1+'\" '+'q32=\"'+b2+'\" '+'q33=\"'+c3+'\"  \>')
+    print('q31=\"'+a1+'\" '+'q32=\"'+b2+'\" '+'q33=\"'+c3+'\"  />')
 
 print(' <AmoebaMultipoleForce  direct11Scale="0.0"  direct12Scale="1.0"  direct13Scale="1.0"  direct14Scale="1.0"  mpole12Scale="0.0"  mpole13Scale="0.0"  mpole14Scale="0.4"  mpole15Scale="0.8"  mutual11Scale="1.0"  mutual12Scale="1.0"  mutual13Scale="1.0"  mutual14Scale="1.0"  polar12Scale="0.0"  polar13Scale="0.0"  polar14Intra="0.5"  polar14Scale="1.0"  polar15Scale="1.0"  > ')
 

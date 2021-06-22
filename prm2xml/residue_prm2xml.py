@@ -21,10 +21,11 @@ with open(in_file) as f:
 def convert_bond(line_str):
     s = line_str.split()
     tail = s[6:]
-    for i in tail:
-        atom1 = str(int(s[0])-1)
-        atom2 = str(int(i)-1)
-        print('   <Bond from="' + atom1 + '" to="' + atom2 + '" />')
+    for atom2 in tail:
+        atom1 = int(s[0])-1
+        atom2 = int(atom2)-1
+        if atom1 < atom2:
+            print('   <Bond from="' + str(atom1) + '" to="' + str(atom2) + '" />')
 
 with open(in_file) as f:
     f.readline()

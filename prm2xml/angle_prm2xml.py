@@ -4,6 +4,12 @@ in_file = sys.argv[1]
 
 def convert(line_str):
     l = line_str.split()
+    
+    #Unit Convert
+    openmm_k_fac = 0.001274519  # kcal/radian^2 to kJ/degree^2
+    l_4 = float(l[4]) * openmm_k_fac
+    l[4] = str(round(l_4, 4))
+    
     print('  <Angle class1="' + l[1] + '" class2="' + l[2] + '" class3="' + \
           l[3] + '" k="' + l[4] + '" angle1="' + l[5] + '"  />')
 

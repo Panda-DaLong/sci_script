@@ -7,6 +7,7 @@ residue_name = sys.argv[2]
 # <Atom/>
 def convert_atom(line_str):
     s = line_str.split()
+    s[1] = s[1] + s[0]
     print('   <Atom name=\"' + s[1] + '\" type=\"' + s[5] + '\" />')
 
 print(' <Residues>')

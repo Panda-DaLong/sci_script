@@ -2,6 +2,7 @@ import sys
 
 in_file = sys.argv[1]
 
+#Convert line 1
 def z_then_x(line_str):
     a1,b2,c3,d4,e5 = line_str.split()
     print('  <Multipole '+'type=\"'+b2+'\" kz=\"'+c3+'\" kx=\"'+d4+'\" c0=\"'+e5+'\" ',end='')
@@ -32,24 +33,44 @@ def convert_1(line_str):
         else:
             trisector(line_str) 
 
+#Convert line 2,3,4,5
+def unit_convert(param, type):
+    bohr                 = 0.52917720859
+    dipoleConversion     = 0.1*bohr
+    quadrupoleConversion = 0.01*bohr*bohr/3.0
+    if type == 'd':
+        conver_fac = dipoleConversion
+    elif type == 'q':
+        conver_fac = quadrupoleConversion   
+    param = float(param) * conver_fac
+    param = str(round(param, 4))
+ 
 def convert_2(line_str):
     a1,b2,c3 = line_str.split()
+    for i in [a1,b2,c3]:
+        unit_convert(i, 'd')
     print('d1=\"'+a1+'\" d2=\"'+b2+'\" d3=\"'+c3+'\" ',end='')
 
 def convert_3(line_str):
     a1 = line_str.strip()
+    unit_convert(a1, 'q')
     print('q11=\"'+a1+'\" ',end='')    
 
 def convert_4(line_str):
     a1,b2 = line_str.split()
+    for i in [a1,b2]:
+        unit_convert(i, 'q')
     print('q21=\"'+a1+'\" '+'q22=\"'+b2+'\" ',end='')
 
 def convert_5(line_str):
     a1,b2,c3 = line_str.split()
+    for i in [a1,b2,c3]:
+        unit_convert(i, 'q')
     print('q31=\"'+a1+'\" '+'q32=\"'+b2+'\" '+'q33=\"'+c3+'\"  />')
 
 print(' <AmoebaMultipoleForce  direct11Scale="0.0"  direct12Scale="1.0"  direct13Scale="1.0"  direct14Scale="1.0"  mpole12Scale="0.0"  mpole13Scale="0.0"  mpole14Scale="0.4"  mpole15Scale="0.8"  mutual11Scale="1.0"  mutual12Scale="1.0"  mutual13Scale="1.0"  mutual14Scale="1.0"  polar12Scale="0.0"  polar13Scale="0.0"  polar14Intra="0.5"  polar14Scale="1.0"  polar15Scale="1.0"  > ')
 
+#Start conversion 
 with open(in_file) as f:
     while True:
         line = f.readline()

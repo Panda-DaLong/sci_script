@@ -21,6 +21,6 @@ with open(in_file) as f:
     for line in f:
         convert(line)
 
-print('</AmoebaStretchBendForce>')
+print(' </AmoebaStretchBendForce>')
 
 

@@ -2,8 +2,12 @@ import sys
 import re
 import numpy as np
 
+
 in_file = sys.argv[1]
+#in_file is a pdb file
 dihedral_file = sys.argv[2]
+#dihedral is a csv file
+
 
 def read_file(filename):
     coordinates = []
@@ -17,11 +21,6 @@ def read_file(filename):
                 coordinate_z = lst_line[7]
                 coordinates.append((coordinate_x, coordinate_y, coordinate_z)) 
     return np.array(coordinates, dtype=float)
-
-arr_coor = read_file(in_file)
-
-print(arr_coor)
-print(arr_coor.shape)
 
 def dihedral(coordinates, a, b, c, d):
     i = coordinates[a]
@@ -37,11 +36,10 @@ def dihedral(coordinates, a, b, c, d):
     r = -np.arctan2(sin, cos)
     return np.degrees(r)
 
-print(dihedral(arr_coor, 7, 6, 1, 3))
+
+arr_coor = read_file(in_file)
 
 arr_dihe = np.loadtxt(dihedral_file, dtype=int, delimiter=',')
-print(arr_dihe)
-print(arr_dihe.shape)
 
 x = arr_dihe.shape[0]
 y = arr_dihe.shape[1]
@@ -51,5 +49,6 @@ for i in range(x):
     atom_b = arr_dihe[i][1]
     atom_c = arr_dihe[i][2]
     atom_d = arr_dihe[i][3]
+    print('dihedral {} {} {} {} : '.format(atom_a, atom_b, atom_c, atom_d), end='')
     print(dihedral(arr_coor, atom_a, atom_b, atom_c, atom_d))
 

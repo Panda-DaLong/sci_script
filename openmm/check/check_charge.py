@@ -47,7 +47,7 @@ for atom in atom_lst:
     charge_lst.append(charge)
 
 
-#compute the total charge
+#compute the total charge in residue
 charge_np = np.array(charge_lst)
 
 total_charge = charge_np.sum()

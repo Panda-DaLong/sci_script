@@ -3,6 +3,7 @@ import numpy as np
 import MDAnalysis as mda
 from lipyphilic.lib.assign_leaflets import AssignLeaflets
 from lipyphilic.lib.memb_thickness import MembThickness
+from lipyphilic.lib.area_per_lipid import AreaPerLipid
 
 
 #In_File:
@@ -48,15 +49,13 @@ with open(box_file) as f:
 
         all_box_dim.append(box_dim)
 
-
-#Part_2:
 u = mda.Universe(tra_trans_file)
 
 for ts in u.trajectory:
     ts.dimensions = all_box_dim[u.trajectory.frame]
 
 
-#Part_3:
+#Part_2:
 leaflets = AssignLeaflets(
     universe=u,
     lipid_sel="name P" 
@@ -65,6 +64,7 @@ leaflets = AssignLeaflets(
 leaflets.run()
 
 
+#Part_3:
 memb_thickness = MembThickness(
     universe=u,
     leaflets=leaflets.leaflets,
@@ -74,4 +74,16 @@ memb_thickness = MembThickness(
 memb_thickness.run()
 
 print('the thickness of membrane is', memb_thickness.memb_thickness, 'angstrom')
+
+
+#Part_4:
+areas = AreaPerLipid(
+    universe=u,
+    leaflets=leaflets.leaflets,
+    lipid_sel="name P"
+    )
+
+areas.run()
+
+print(areas.areas)
 

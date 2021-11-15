@@ -4,6 +4,7 @@ import MDAnalysis as mda
 from MDAnalysis.analysis.leaflet import LeafletFinder, optimize_cutoff
 
 
+#in_file is a structure or trajectory file of membrane 
 in_file = sys.argv[1]
 
 
@@ -19,13 +20,13 @@ print()
 print(l1.residues) 
 print()
 
-#the thickness of membrain
+#the thickness of membrane
 t_mem = np.abs((l1.centroid() - l0.centroid())[2])
 
-#the z-coordinate of the center of membrain
+#the z-coordinate of the center of membrane
 z_mem = 0.5 * (l1.centroid() + l0.centroid())[2]
 
-print('the thickness of membrain is', t_mem, 'angstrom')
+print('the thickness of membrane is', t_mem, 'angstrom')
 print()
-print('the z-coordinate of the center of membrain is', z_mem, 'angstrom')
+print('the z-coordinate of the center of membrane is', z_mem, 'angstrom')
 

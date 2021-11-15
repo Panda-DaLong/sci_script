@@ -11,7 +11,7 @@ box_file = sys.argv[1]
 tra_file = sys.argv[2]
 
 #Out_File:
-cen_file = 'center_npt_2.pdb'
+cen_file = sys.argv[3]
 
 
 #Part_1:
@@ -70,7 +70,7 @@ with mda.Writer(cen_file, ag_all.n_atoms) as w:
        
         ag_all.translate(box_bottom - water_center)
 
-        #Wrap not_cha_b
+        #Add pbc box before wrap all
         ts.dimensions = all_box_dim[u.trajectory.frame]
 
         ag_all.wrap(compound='residues')

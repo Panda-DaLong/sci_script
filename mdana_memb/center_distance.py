@@ -15,10 +15,10 @@ def dist(vec1, vec2):
 u = mda.Universe(tra_file)
 
 
-ag_cha_K = u.select_atoms('resname HOH and chainID K')
-ag_cha_L = u.select_atoms('resname HOH and chainID L')
-ag_cha_M = u.select_atoms('resname HOH and chainID M')
-ag_cha_N = u.select_atoms('resname HOH and chainID N')
+ag_cha_K = u.select_atoms('resname cha and chainID K')
+ag_cha_L = u.select_atoms('resname cha and chainID L')
+ag_cha_M = u.select_atoms('resname cha and chainID M')
+ag_cha_N = u.select_atoms('resname cha and chainID N')
 
 distance_KL_tra = []
 distance_LM_tra = []
